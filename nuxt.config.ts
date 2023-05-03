@@ -8,5 +8,5 @@ export default defineNuxtConfig({
       meta: [{ name: 'description', content: 'Lessonbuddy - Big Blue Swim School' }],
     },
   },
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', 'nuxt-headlessui'],
 });
