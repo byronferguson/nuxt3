@@ -10,5 +10,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/ui'), require('@tailwindcss/typography')],
+  plugins: [],
 };
