@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  angular:
+    image: bigblueswimschool/alpine-node
+    working_dir: '/var/www/ng'
+    environment:
+      - HOST=0.0.0.0
+    ports:
+      - '9000:9000'
+    volumes:
+      - ./lessonbuddy-ng/:/var/www/ng
+    command: npm run dev
+  nuxt:
+    image: bigblueswimschool/alpine-node
+    working_dir: '/var/www/nuxt'
+    environment:
+      - HOST=0.0.0.0
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./lessonbuddy-nuxt/:/var/www/nuxt
+    command: npm run dev
