@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { useCounterStore } from "@/stores/counter";
+import { useCounterStore } from '@/stores/counter';
 
 export default defineComponent({
   setup() {
