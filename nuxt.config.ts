@@ -16,7 +16,13 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', 'nuxt-headlessui', 'nuxt-vitest'],
+  modules: [
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
+    '@nuxtjs/tailwindcss',
+    'nuxt-headlessui',
+    'nuxt-vitest',
+  ],
 
   devtools: {
     enabled: true,
