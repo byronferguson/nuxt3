@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["headlessui", "Persistedstate", "pinia", "vueuse"]
+  "cSpell.words": ["headlessui", "Persistedstate", "pinia", "vueuse"],
+  "svg.preview.background": "editor"
 }

@@ -1,7 +1,5 @@
 <template>
-  <div class="mx-auto">
-    <StarterHeading class="pb-8" />
-    <StarterBody class="pb-8" />
-    <StarterCounter class="pt-5 border-t divide-slate-200" />
+  <div>
+    <h1 class="text-2xl">LessonBuddy</h1>
   </div>
 </template>
