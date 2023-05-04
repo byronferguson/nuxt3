@@ -23,6 +23,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    '@sidebase/nuxt-auth',
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
