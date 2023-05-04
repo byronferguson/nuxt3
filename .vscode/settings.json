@@ -1,4 +1,5 @@
 {
   "cSpell.words": ["headlessui", "Persistedstate", "pinia", "vueuse"],
-  "svg.preview.background": "editor"
+  "svg.preview.background": "editor",
+  "vue.codeActions.enabled": false
 }

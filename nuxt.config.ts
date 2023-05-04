@@ -35,4 +35,8 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
+  devServer: {
+    host: 'lessonbuddy.local',
+    port: 3000,
+  },
 });

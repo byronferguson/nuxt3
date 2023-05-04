@@ -37,6 +37,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.0.17",
     "@nuxt/devtools": "^0.4.5",
     "@pinia/nuxt": "^0.4.9",
     "next-auth": "4.21.1",
