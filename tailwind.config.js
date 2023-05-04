@@ -12,11 +12,11 @@ module.exports = {
   theme: {
     // Consider reducing breakpoints to align with expected iPads and iMacs, and rename them to match
     // https://tailwindcss.com/docs/screens#using-custom-screen-names
-    screens: {
-      'ipad-v': '768px',
-      'ipad-h': '1024px',
-      imac: '1280px',
-    },
+    // screens: {
+    //   'ipad-v': '768px',
+    //   'ipad-h': '1024px',
+    //   imac: '1280px',
+    // },
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
