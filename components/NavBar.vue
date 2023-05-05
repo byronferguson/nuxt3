@@ -31,7 +31,7 @@ const scheduleNavigation = [
     icon: 'bell-icon',
     current: false,
   },
-  { name: 'Shift Dashboard', to: '/schedule/shift-dashboard', icon: 'bell-icon', current: false },
+  { name: 'Shift Dashboard', to: '/schedule/shift-dashboard', icon: 'bell-icon' },
   { name: 'divider' },
   {
     name: 'Regular Schedule',
@@ -74,8 +74,8 @@ const scheduleNavigation = [
 ];
 
 const crmNavigation = [
-  { name: 'All Tickets', to: '/crm', icon: 'bell-icon', current: false },
-  { name: 'My Tickets', to: '/crm?me=true', icon: 'bell-icon', current: false },
+  { name: 'All Tickets', to: '/crm', icon: 'bell-icon' },
+  { name: 'My Tickets', to: '/crm?me=true', icon: 'bell-icon' },
 ];
 
 const staffNavigation = [
@@ -111,14 +111,14 @@ const staffNavigation = [
     current: false,
   },
   { name: 'divider' },
-  { name: 'Employees', to: `/staff/${locationId}`, icon: 'bell-icon', current: false },
+  { name: 'Employees', to: `/staff/${locationId}`, icon: 'bell-icon' },
   {
     name: 'Hours',
     to: `/staff/schedule/hours/${locationId}/${today}`,
     icon: 'bell-icon',
     current: false,
   },
-  { name: 'PTO Requests', to: `/staff/pto/requests`, icon: 'bell-icon', current: false },
+  { name: 'PTO Requests', to: `/staff/pto/requests`, icon: 'bell-icon' },
 ];
 
 const toolsNavigation = [
@@ -128,11 +128,11 @@ const toolsNavigation = [
     icon: 'bell-icon',
     current: false,
   },
-  { name: 'Request to Order', to: '/tools/request-to-order', icon: 'bell-icon', current: false },
+  { name: 'Request to Order', to: '/tools/request-to-order', icon: 'bell-icon' },
   { name: 'divider' },
-  { name: 'Listen360', to: '/tools/listen360', icon: 'bell-icon', current: false },
+  { name: 'Listen360', to: '/tools/listen360', icon: 'bell-icon' },
   { name: 'divider' },
-  { name: 'Current Pricing', to: '/tools/current-pricing', icon: 'bell-icon', current: false },
+  { name: 'Current Pricing', to: '/tools/current-pricing', icon: 'bell-icon' },
   { name: 'divider' },
   {
     name: 'Retail Calendar',
@@ -141,33 +141,37 @@ const toolsNavigation = [
     current: false,
   },
   { name: 'divider' },
-  { name: 'Import Leads', to: '/tools/import-leads', icon: 'bell-icon', current: false },
+  { name: 'Import Leads', to: '/tools/import-leads', icon: 'bell-icon' },
   { name: 'divider' },
-  { name: 'Manage Products & Inventory', to: '#', icon: 'bell-icon', current: false },
-  { name: 'Manage Lesson Voucher Pricing', to: '#', icon: 'bell-icon', current: false },
-  { name: 'Manage Product Categories', to: '#', icon: 'bell-icon', current: false },
-  { name: 'Manage Product Attributes', to: '#', icon: 'bell-icon', current: false },
+  { name: 'Manage Products & Inventory', to: '#', icon: 'bell-icon' },
+  { name: 'Manage Lesson Voucher Pricing', to: '#', icon: 'bell-icon' },
+  { name: 'Manage Product Categories', to: '#', icon: 'bell-icon' },
+  { name: 'Manage Product Attributes', to: '#', icon: 'bell-icon' },
 ];
 
 const settingsNavigation = [
-  { name: 'General', to: '#', icon: 'bell-icon', current: false },
-  { name: 'Locations', to: '#', icon: 'bell-icon', current: false },
+  { name: 'General', to: '#', icon: 'bell-icon' },
+  { name: 'Locations', to: '#', icon: 'bell-icon' },
 ];
 
 const navigation = [
-  { name: 'Families', to: '/families', current: true },
-  { name: 'Schedule', current: false, navigation: scheduleNavigation },
-  { name: 'CRM', current: false, navigation: crmNavigation },
-  { name: 'Staff', current: false, navigation: staffNavigation },
-  { name: 'Tools', current: false, navigation: toolsNavigation },
-  { name: 'Reports', to: '/reports', current: false },
-  { name: 'Check-in', to: `/schedule/check-in/${locationId}/${today}/${time}`, current: false },
-  { name: 'POS', to: '/pos', current: false },
+  { name: 'Families', to: '/families', icon: 'fa fa-address-book' },
+  { name: 'Schedule', navigation: scheduleNavigation, icon: 'fa fa-calendar' },
+  { name: 'CRM', navigation: crmNavigation, icon: 'fa fa-comment' },
+  { name: 'Staff', navigation: staffNavigation, icon: 'fa fa-users' },
+  { name: 'Tools', navigation: toolsNavigation, icon: 'fa fa-wrench' },
+  { name: 'Reports', to: '/reports', icon: 'fa fa-chart-bar' },
+  {
+    name: 'Check-in',
+    to: `/schedule/check-in/${locationId}/${today}/${time}`,
+    icon: 'fa fa-check',
+  },
+  { name: 'POS', to: '/pos', icon: 'fa fa-cash-register' },
 ];
 
 const rightNavigation = [
-  { name: 'Settings', to: '#', current: false, navigation: settingsNavigation },
-  { name: 'Support', to: '/support', current: false },
+  { name: '', to: '#', navigation: settingsNavigation, icon: 'fa fa-cog' },
+  { name: '', to: '/support', icon: 'fa fa-question-circle' },
 ];
 
 const userNavigation = [
@@ -191,7 +195,7 @@ const userNavigation = [
             </NuxtLink>
           </div>
           <div class="hidden md:block">
-            <div class="flex items-baseline ml-10 space-x-4">
+            <div class="flex items-center ml-10 space-x-4">
               <template v-for="item in navigation" :key="item.name">
                 <!-- Single Action Nav Item -->
                 <NuxtLink
@@ -205,7 +209,8 @@ const userNavigation = [
                   ]"
                   :aria-current="item.current ? 'page' : undefined"
                 >
-                  {{ item.name }}
+                  <fa v-if="item.icon" :icon="item.icon" class="inline-block mr-1 text-lg" />
+                  <span v-if="item.name">{{ item.name }}</span>
                 </NuxtLink>
                 <!-- Multi-Action Nav Item -->
                 <Menu v-else as="div" class="relative">
@@ -220,7 +225,8 @@ const userNavigation = [
                         'focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600',
                       ]"
                     >
-                      {{ item.name }}
+                      <fa v-if="item.icon" :icon="item.icon" class="inline-block mr-1 text-lg" />
+                      <span v-if="item.name">{{ item.name }}</span>
                       <ChevronDownIcon
                         class="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
                         aria-hidden="true"
@@ -249,7 +255,7 @@ const userNavigation = [
                             ]"
                             @click="close"
                           >
-                            {{ subItem.name }}
+                            <span v-if="subItem.name">{{ subItem.name }}</span>
                           </NuxtLink>
                         </MenuItem>
                       </template>
@@ -264,20 +270,74 @@ const userNavigation = [
         <div class="hidden md:block">
           <div class="flex items-center ml-4 md:ml-6">
             <div class="hidden md:block">
-              <div class="flex items-baseline ml-10 space-x-4">
-                <a
-                  v-for="item in rightNavigation"
-                  :key="item.name"
-                  :to="item.to"
-                  :class="[
-                    item.current
-                      ? 'bg-light-primary'
-                      : 'text-white hover:bg-medium-primary hover:bg-opacity-75',
-                    'rounded-md px-3 py-2 text-sm font-medium',
-                  ]"
-                  :aria-current="item.current ? 'page' : undefined"
-                  >{{ item.name }}</a
-                >
+              <div class="flex items-center ml-10 space-x-4">
+                <template v-for="item in rightNavigation" :key="item.name">
+                  <!-- Single Action Nav Item -->
+                  <NuxtLink
+                    v-if="!item.navigation"
+                    :to="item.to"
+                    :class="[
+                      item.current
+                        ? 'bg-light-primary'
+                        : 'text-white hover:bg-medium-primary hover:bg-opacity-75',
+                      'rounded-md px-3 py-2 text-sm font-medium',
+                    ]"
+                    :aria-current="item.current ? 'page' : undefined"
+                  >
+                    <fa v-if="item.icon" :icon="item.icon" class="inline-block mr-1 text-lg" />
+                    <span v-if="item.name">{{ item.name }}</span>
+                  </NuxtLink>
+                  <!-- Multi-Action Nav Item -->
+                  <Menu v-else as="div" class="relative">
+                    <div>
+                      <MenuButton
+                        :class="[
+                          item.current
+                            ? 'bg-light-primary'
+                            : 'text-white hover:bg-medium-primary hover:bg-opacity-75',
+                          'flex flex-row',
+                          'rounded-md px-3 py-2 text-sm font-medium',
+                          'focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600',
+                        ]"
+                      >
+                        <fa v-if="item.icon" :icon="item.icon" class="inline-block mr-1 text-lg" />
+                        <span v-if="item.name">{{ item.name }}</span>
+                        <ChevronDownIcon
+                          class="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
+                          aria-hidden="true"
+                        />
+                      </MenuButton>
+                    </div>
+                    <transition
+                      enter-active-class="transition duration-100 ease-out"
+                      enter-from-class="transform scale-95 opacity-0"
+                      enter-to-class="transform scale-100 opacity-100"
+                      leave-active-class="transition duration-75 ease-in"
+                      leave-from-class="transform scale-100 opacity-100"
+                      leave-to-class="transform scale-95 opacity-0"
+                    >
+                      <MenuItems
+                        class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      >
+                        <template v-for="subItem in item.navigation" :key="subItem.name">
+                          <hr v-if="subItem.name === 'divider'" />
+                          <MenuItem v-else v-slot="{ active, close }" as="div">
+                            <NuxtLink
+                              :to="subItem.to"
+                              :class="[
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm text-gray-700',
+                              ]"
+                              @click="close"
+                            >
+                              <span v-if="subItem.name">{{ subItem.name }}</span>
+                            </NuxtLink>
+                          </MenuItem>
+                        </template>
+                      </MenuItems>
+                    </transition>
+                  </Menu>
+                </template>
               </div>
             </div>
 
