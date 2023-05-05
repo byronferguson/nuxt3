@@ -40,7 +40,7 @@
 </script>
 
 <template>
-  <h1>Reset Password</h1>
+  <h1 class="text-2xl">Reset Password</h1>
   <!-- <div class="pt-24 login-page">
     <div class="w-full max-w-xs mx-auto">
       <div class="mb-3 text-4xl font-bold text-center text-white">

@@ -1,37 +1,37 @@
-<!-- <script lang="ts">
-import { createComponent, SetupContext } from '@vue/composition-api';
-import { useLogin } from '~/lib/auth';
-import Loader from '~/components/Loader.vue';
+<script lang="ts">
+// import { createComponent, SetupContext } from '@vue/composition-api';
+// import { useLogin } from '~/lib/auth';
+// import Loader from '~/components/Loader.vue';
 
-export default createComponent({
-  components: {
-    Loader,
-  },
-  layout: 'empty',
-  head: {
-    bodyAttrs: {
-      class: 'empty login',
-    },
-  },
-  setup(_props, { root }: SetupContext) {
-    const { username, password, errors, loginInProgress, verifyAuthStatus, login } = useLogin(
-      root.$store,
-      root.$router,
-      root.$can,
-    );
+// export default createComponent({
+//   components: {
+//     Loader,
+//   },
+//   layout: 'empty',
+//   head: {
+//     bodyAttrs: {
+//       class: 'empty login',
+//     },
+//   },
+//   setup(_props, { root }: SetupContext) {
+//     const { username, password, errors, loginInProgress, verifyAuthStatus, login } = useLogin(
+//       root.$store,
+//       root.$router,
+//       root.$can,
+//     );
 
-    verifyAuthStatus();
+//     verifyAuthStatus();
 
-    return {
-      username,
-      password,
-      errors,
-      loginInProgress,
-      login,
-    };
-  },
-});
-</script> -->
+//     return {
+//       username,
+//       password,
+//       errors,
+//       loginInProgress,
+//       login,
+//     };
+//   },
+// });
+</script>
 
 <template>
   <h1 class="text-2xl">Login</h1>
