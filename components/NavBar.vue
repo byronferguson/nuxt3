@@ -28,150 +28,135 @@ const scheduleNavigation = [
   {
     name: 'Booking Dashboard',
     to: '/schedule/booking-dashboard',
-    icon: 'bell-icon',
     current: false,
   },
-  { name: 'Shift Dashboard', to: '/schedule/shift-dashboard', icon: 'bell-icon' },
+  { name: 'Shift Dashboard', to: '/schedule/shift-dashboard' },
   { name: 'divider' },
   {
     name: 'Regular Schedule',
     to: `/schedule/${locationId}/${today}`,
-    icon: 'bell-icon',
     current: false,
   },
   {
     name: 'Check-in',
     to: `/schedule/check-in/${locationId}/${today}/${time}`,
-    icon: 'bell-icon',
     current: false,
   },
   {
     name: 'Staff Schedule',
     to: `/schedule/staff/${locationId}/${today}/all`,
-    icon: 'bell-icon',
     current: false,
   },
   { name: 'divider' },
   {
     name: 'Absence Report',
     to: `/reports/absence/${locationId}/${today}`,
-    icon: 'bell-icon',
     current: false,
   },
   { name: 'divider' },
   {
     name: 'Schedule Suppressions',
     to: `/schedule/suppressions/${locationId}/${year}`,
-    icon: 'bell-icon',
     current: false,
   },
   {
     name: 'Assign Trial Lessons',
     to: `/schedule/assign-trial-lessons/${locationId}/${today}`,
-    icon: 'bell-icon',
     current: false,
   },
 ];
 
 const crmNavigation = [
-  { name: 'All Tickets', to: '/crm', icon: 'bell-icon' },
-  { name: 'My Tickets', to: '/crm?me=true', icon: 'bell-icon' },
+  { name: 'All Tickets', to: '/crm' },
+  { name: 'My Tickets', to: '/crm?me=true' },
 ];
 
 const staffNavigation = [
   {
     name: 'Week Schedule - By Employee',
     to: `/staff/schedule/week/by-employee/${locationId}/${today}`,
-    icon: 'bell-icon',
     current: false,
   },
   {
     name: 'Week Schedule - By Position',
     to: `/staff/schedule/week/by-position/${locationId}/${today}`,
-    icon: 'bell-icon',
     current: false,
   },
   {
     name: 'Day Schedule',
     to: `/staff/schedule/day/${locationId}/${today}`,
-    icon: 'bell-icon',
     current: false,
   },
   { name: 'divider' },
   {
     name: 'Substitutes Schedule',
     to: `/staff/schedule/substitutes/${locationId}/${today}`,
-    icon: 'bell-icon',
     current: false,
   },
   {
     name: 'Check-in',
     to: `/staff/schedule/check-in/${locationId}/${today}`,
-    icon: 'bell-icon',
     current: false,
   },
   { name: 'divider' },
-  { name: 'Employees', to: `/staff/${locationId}`, icon: 'bell-icon' },
+  { name: 'Employees', to: `/staff/${locationId}` },
   {
     name: 'Hours',
     to: `/staff/schedule/hours/${locationId}/${today}`,
-    icon: 'bell-icon',
     current: false,
   },
-  { name: 'PTO Requests', to: `/staff/pto/requests`, icon: 'bell-icon' },
+  { name: 'PTO Requests', to: `/staff/pto/requests` },
 ];
 
 const toolsNavigation = [
   {
     name: 'Receipt Submission',
     to: '/tools/receipt-submission',
-    icon: 'bell-icon',
     current: false,
   },
-  { name: 'Request to Order', to: '/tools/request-to-order', icon: 'bell-icon' },
+  { name: 'Request to Order', to: '/tools/request-to-order' },
   { name: 'divider' },
-  { name: 'Listen360', to: '/tools/listen360', icon: 'bell-icon' },
+  { name: 'Listen360', to: '/tools/listen360' },
   { name: 'divider' },
-  { name: 'Current Pricing', to: '/tools/current-pricing', icon: 'bell-icon' },
+  { name: 'Current Pricing', to: '/tools/current-pricing' },
   { name: 'divider' },
   {
     name: 'Retail Calendar',
     to: `/tools/retail-calendar/${year}`,
-    icon: 'bell-icon',
     current: false,
   },
   { name: 'divider' },
-  { name: 'Import Leads', to: '/tools/import-leads', icon: 'bell-icon' },
+  { name: 'Import Leads', to: '/tools/import-leads' },
   { name: 'divider' },
-  { name: 'Manage Products & Inventory', to: '#', icon: 'bell-icon' },
-  { name: 'Manage Lesson Voucher Pricing', to: '#', icon: 'bell-icon' },
-  { name: 'Manage Product Categories', to: '#', icon: 'bell-icon' },
-  { name: 'Manage Product Attributes', to: '#', icon: 'bell-icon' },
+  { name: 'Manage Products & Inventory', to: '#' },
+  { name: 'Manage Lesson Voucher Pricing', to: '#' },
+  { name: 'Manage Product Categories', to: '#' },
+  { name: 'Manage Product Attributes', to: '#' },
 ];
 
 const settingsNavigation = [
-  { name: 'General', to: '#', icon: 'bell-icon' },
-  { name: 'Locations', to: '#', icon: 'bell-icon' },
+  { name: 'General', to: '#' },
+  { name: 'Locations', to: '#' },
 ];
 
 const navigation = [
-  { name: 'Families', to: '/families', icon: 'fa fa-address-book' },
-  { name: 'Schedule', navigation: scheduleNavigation, icon: 'fa fa-calendar' },
-  { name: 'CRM', navigation: crmNavigation, icon: 'fa fa-comment' },
-  { name: 'Staff', navigation: staffNavigation, icon: 'fa fa-users' },
-  { name: 'Tools', navigation: toolsNavigation, icon: 'fa fa-wrench' },
-  { name: 'Reports', to: '/reports', icon: 'fa fa-chart-bar' },
+  { name: 'Families', to: '/families', icon: 'address-book' },
+  { name: 'Schedule', navigation: scheduleNavigation, icon: 'calendar' },
+  { name: 'CRM', navigation: crmNavigation, icon: 'comment' },
+  { name: 'Staff', navigation: staffNavigation, icon: 'users' },
+  { name: 'Tools', navigation: toolsNavigation, icon: 'wrench' },
+  { name: 'Reports', to: '/reports', icon: 'chart-bar' },
   {
     name: 'Check-in',
     to: `/schedule/check-in/${locationId}/${today}/${time}`,
-    icon: 'fa fa-check',
+    icon: 'check',
   },
-  { name: 'POS', to: '/pos', icon: 'fa fa-cash-register' },
+  { name: 'POS', to: '/pos', icon: 'cash-register' },
 ];
 
 const rightNavigation = [
-  { name: '', to: '#', navigation: settingsNavigation, icon: 'fa fa-cog' },
-  { name: '', to: '/support', icon: 'fa fa-question-circle' },
+  { name: '', to: '#', navigation: settingsNavigation, icon: 'cog' },
+  { name: '', to: '/support', icon: 'question-circle' },
 ];
 
 const userNavigation = [
@@ -209,7 +194,11 @@ const userNavigation = [
                   ]"
                   :aria-current="item.current ? 'page' : undefined"
                 >
-                  <fa v-if="item.icon" :icon="item.icon" class="inline-block mr-1 text-lg" />
+                  <fa
+                    v-if="item.icon"
+                    :icon="['fas', item.icon]"
+                    class="inline-block mr-1 text-lg"
+                  />
                   <span v-if="item.name">{{ item.name }}</span>
                 </NuxtLink>
                 <!-- Multi-Action Nav Item -->
@@ -225,7 +214,11 @@ const userNavigation = [
                         'focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600',
                       ]"
                     >
-                      <fa v-if="item.icon" :icon="item.icon" class="inline-block mr-1 text-lg" />
+                      <fa
+                        v-if="item.icon"
+                        :icon="['fas', item.icon]"
+                        class="inline-block mr-1 text-lg"
+                      />
                       <span v-if="item.name">{{ item.name }}</span>
                       <ChevronDownIcon
                         class="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
@@ -284,7 +277,11 @@ const userNavigation = [
                     ]"
                     :aria-current="item.current ? 'page' : undefined"
                   >
-                    <fa v-if="item.icon" :icon="item.icon" class="inline-block mr-1 text-lg" />
+                    <fa
+                      v-if="item.icon"
+                      :icon="['fas', item.icon]"
+                      class="inline-block mr-1 text-lg"
+                    />
                     <span v-if="item.name">{{ item.name }}</span>
                   </NuxtLink>
                   <!-- Multi-Action Nav Item -->
@@ -300,7 +297,11 @@ const userNavigation = [
                           'focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600',
                         ]"
                       >
-                        <fa v-if="item.icon" :icon="item.icon" class="inline-block mr-1 text-lg" />
+                        <fa
+                          v-if="item.icon"
+                          :icon="['fas', item.icon]"
+                          class="inline-block mr-1 text-lg"
+                        />
                         <span v-if="item.name">{{ item.name }}</span>
                         <ChevronDownIcon
                           class="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"

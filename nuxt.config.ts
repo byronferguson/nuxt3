@@ -34,6 +34,10 @@ export default defineNuxtConfig({
     'nuxt-vitest',
   ],
 
+  build: {
+    transpile: ['@fortawesome/vue-fontawesome'],
+  },
+
   devtools: {
     enabled: true,
   },
