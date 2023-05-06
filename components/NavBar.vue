@@ -15,9 +15,8 @@ type NavBarMenuItem = {
   to: string;
 };
 type NavBarMenuItems = NavBarMenuItem[];
-type NavBarMenu = { name: string; icon: string; navigation: NavBarMenuItems };
-type NavBarItem = { name: string; to: string; icon: string };
-type NavBar = (NavBarMenu & NavBarItem)[];
+type NavBarItem = { name: string; to?: string; icon: string; navigation?: NavBarMenuItems };
+type NavBar = NavBarItem[];
 
 const locationId = 10;
 const now = new Date();
@@ -182,27 +181,19 @@ const userNavigation: NavBarMenuItems = [
                   v-if="!item.navigation"
                   :to="item.to"
                   :class="[
-                    item.current
-                      ? 'bg-light-primary'
-                      : 'text-white hover:bg-medium-primary hover:bg-opacity-75',
+                    'text-white hover:bg-medium-primary hover:bg-opacity-75',
                     'rounded-md px-3 py-2 text-sm font-medium',
+                    'flex flex-row space-x-1',
                   ]"
-                  :aria-current="item.current ? 'page' : undefined"
                 >
-                  <fa
-                    v-if="item.icon"
-                    :icon="['fas', item.icon]"
-                    class="inline-block mr-1 text-lg"
-                  />
-                  <span v-if="item.name">{{ item.name }}</span>
+                  <fa v-if="item.icon" :icon="['fas', item.icon]" class="inline-block text-lg" />
+                  <span v-if="item.name" class="hidden imac:block">{{ item.name }}</span>
                 </NuxtLink>
                 <Menu v-else as="div" class="relative">
                   <div>
                     <MenuButton
                       :class="[
-                        item.current
-                          ? 'bg-light-primary'
-                          : 'text-white hover:bg-medium-primary hover:bg-opacity-75',
+                        'text-white hover:bg-medium-primary hover:bg-opacity-75',
                         'flex flex-row',
                         'rounded-md px-3 py-2 text-sm font-medium',
                         'focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600',
@@ -213,7 +204,7 @@ const userNavigation: NavBarMenuItems = [
                         :icon="['fas', item.icon]"
                         class="inline-block mr-1 text-lg"
                       />
-                      <span v-if="item.name">{{ item.name }}</span>
+                      <span v-if="item.name" class="hidden imac:block">{{ item.name }}</span>
                       <ChevronDownIcon
                         class="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
                         aria-hidden="true"
@@ -229,13 +220,13 @@ const userNavigation: NavBarMenuItems = [
                     leave-to-class="transform scale-95 opacity-0"
                   >
                     <MenuItems
-                      class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      class="absolute right-0 z-10 w-64 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     >
                       <template v-for="subItem in item.navigation" :key="subItem.name">
-                        <hr v-if="item.name === 'divider'" />
+                        <hr v-if="subItem.name === 'divider'" />
                         <MenuItem v-else v-slot="{ active, close }" as="div">
                           <NuxtLink
-                            :to="item.to"
+                            :to="subItem.to"
                             :class="[
                               active ? 'bg-gray-100' : '',
                               'block px-4 py-2 text-sm text-gray-700',
@@ -263,27 +254,22 @@ const userNavigation: NavBarMenuItems = [
                     v-if="!item.navigation"
                     :to="item.to"
                     :class="[
-                      item.current
-                        ? 'bg-light-primary'
-                        : 'text-white hover:bg-medium-primary hover:bg-opacity-75',
+                      'text-white hover:bg-medium-primary hover:bg-opacity-75',
                       'rounded-md px-3 py-2 text-sm font-medium',
                     ]"
-                    :aria-current="item.current ? 'page' : undefined"
                   >
                     <fa
                       v-if="item.icon"
                       :icon="['fas', item.icon]"
                       class="inline-block mr-1 text-lg"
                     />
-                    <span v-if="item.name">{{ item.name }}</span>
+                    <span v-if="item.name" class="hidden imac:block">{{ item.name }}</span>
                   </NuxtLink>
                   <Menu v-else as="div" class="relative">
                     <div>
                       <MenuButton
                         :class="[
-                          item.current
-                            ? 'bg-light-primary'
-                            : 'text-white hover:bg-medium-primary hover:bg-opacity-75',
+                          'text-white hover:bg-medium-primary hover:bg-opacity-75',
                           'flex flex-row',
                           'rounded-md px-3 py-2 text-sm font-medium',
                           'focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600',
@@ -294,7 +280,7 @@ const userNavigation: NavBarMenuItems = [
                           :icon="['fas', item.icon]"
                           class="inline-block mr-1 text-lg"
                         />
-                        <span v-if="item.name">{{ item.name }}</span>
+                        <span v-if="item.name" class="hidden imac:block">{{ item.name }}</span>
                         <ChevronDownIcon
                           class="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
                           aria-hidden="true"
@@ -310,13 +296,13 @@ const userNavigation: NavBarMenuItems = [
                       leave-to-class="transform scale-95 opacity-0"
                     >
                       <MenuItems
-                        class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        class="absolute right-0 z-10 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5 focus:outline-none"
                       >
                         <template v-for="subItem in item.navigation" :key="subItem.name">
                           <hr v-if="item.name === 'divider'" />
                           <MenuItem v-else v-slot="{ active, close }" as="div">
                             <NuxtLink
-                              :to="item.to"
+                              :to="subItem.to"
                               :class="[
                                 active ? 'bg-gray-100' : '',
                                 'block px-4 py-2 text-sm text-gray-700',
@@ -353,7 +339,7 @@ const userNavigation: NavBarMenuItems = [
                 leave-to-class="transform scale-95 opacity-0"
               >
                 <MenuItems
-                  class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  class="absolute right-0 z-10 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5 focus:outline-none"
                 >
                   <MenuItem
                     v-for="item in userNavigation"
@@ -398,12 +384,9 @@ const userNavigation: NavBarMenuItems = [
           as="a"
           :to="item.to"
           :class="[
-            item.current
-              ? 'bg-indigo-700 text-white'
-              : 'text-white hover:bg-medium-primary hover:bg-opacity-75',
+            'text-white hover:bg-medium-primary hover:bg-opacity-75',
             'block rounded-md px-3 py-2 text-base font-medium',
           ]"
-          :aria-current="item.current ? 'page' : undefined"
           >{{ item.name }}</DisclosureButton
         >
       </div>
@@ -438,3 +421,15 @@ const userNavigation: NavBarMenuItems = [
     </DisclosurePanel>
   </Disclosure>
 </template>
+
+<style lang="postcss" scoped>
+.router-link-active {
+  background-color: #6366f1;
+  color: #fff;
+}
+
+.router-link-exact-active {
+  background-color: #6366f1;
+  color: #fff;
+}
+</style>

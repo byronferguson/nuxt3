@@ -29,6 +29,11 @@ module.exports = {
         blush: '#ffd0d3',
         gold: '#ffcf34',
       },
+      screens: {
+        'ipad-v': '768px',
+        'ipad-h': '1024px',
+        imac: '1280px',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms')],
