@@ -25,7 +25,6 @@ export default defineNuxtConfig({
   css: ['@fortawesome/fontawesome-svg-core/styles.css'],
 
   modules: [
-    '@sidebase/nuxt-auth',
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
