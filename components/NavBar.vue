@@ -10,6 +10,15 @@ import {
 } from '@headlessui/vue';
 import { Bars3Icon, BellIcon, ChevronDownIcon, XMarkIcon } from '@heroicons/vue/24/outline';
 
+type NavBarMenuItem = {
+  name: string;
+  to: string;
+};
+type NavBarMenuItems = NavBarMenuItem[];
+type NavBarMenu = { name: string; icon: string; navigation: NavBarMenuItems };
+type NavBarItem = { name: string; to: string; icon: string };
+type NavBar = (NavBarMenu & NavBarItem)[];
+
 const locationId = 10;
 const now = new Date();
 now.setSeconds(0);
@@ -24,122 +33,109 @@ const user = {
   imageUrl: '/images/profile.jpg',
 };
 
-const scheduleNavigation = [
+const divider: NavBarMenuItem = { name: 'divider', to: '#' };
+
+const scheduleNavigation: NavBarMenuItems = [
   {
     name: 'Booking Dashboard',
     to: '/schedule/booking-dashboard',
-    current: false,
   },
   { name: 'Shift Dashboard', to: '/schedule/shift-dashboard' },
-  { name: 'divider' },
+  divider,
   {
     name: 'Regular Schedule',
     to: `/schedule/${locationId}/${today}`,
-    current: false,
   },
   {
     name: 'Check-in',
     to: `/schedule/check-in/${locationId}/${today}/${time}`,
-    current: false,
   },
   {
     name: 'Staff Schedule',
     to: `/schedule/staff/${locationId}/${today}/all`,
-    current: false,
   },
-  { name: 'divider' },
+  { name: 'divider', to: '#' },
   {
     name: 'Absence Report',
     to: `/reports/absence/${locationId}/${today}`,
-    current: false,
   },
-  { name: 'divider' },
+  divider,
   {
     name: 'Schedule Suppressions',
     to: `/schedule/suppressions/${locationId}/${year}`,
-    current: false,
   },
   {
     name: 'Assign Trial Lessons',
     to: `/schedule/assign-trial-lessons/${locationId}/${today}`,
-    current: false,
   },
 ];
 
-const crmNavigation = [
+const crmNavigation: NavBarMenuItems = [
   { name: 'All Tickets', to: '/crm' },
   { name: 'My Tickets', to: '/crm?me=true' },
 ];
 
-const staffNavigation = [
+const staffNavigation: NavBarMenuItems = [
   {
     name: 'Week Schedule - By Employee',
     to: `/staff/schedule/week/by-employee/${locationId}/${today}`,
-    current: false,
   },
   {
     name: 'Week Schedule - By Position',
     to: `/staff/schedule/week/by-position/${locationId}/${today}`,
-    current: false,
   },
   {
     name: 'Day Schedule',
     to: `/staff/schedule/day/${locationId}/${today}`,
-    current: false,
   },
-  { name: 'divider' },
+  divider,
   {
     name: 'Substitutes Schedule',
     to: `/staff/schedule/substitutes/${locationId}/${today}`,
-    current: false,
   },
   {
     name: 'Check-in',
     to: `/staff/schedule/check-in/${locationId}/${today}`,
-    current: false,
   },
-  { name: 'divider' },
+  divider,
   { name: 'Employees', to: `/staff/${locationId}` },
   {
     name: 'Hours',
     to: `/staff/schedule/hours/${locationId}/${today}`,
-    current: false,
   },
   { name: 'PTO Requests', to: `/staff/pto/requests` },
 ];
 
-const toolsNavigation = [
+const toolsNavigation: NavBarMenuItems = [
   {
     name: 'Receipt Submission',
     to: '/tools/receipt-submission',
-    current: false,
   },
   { name: 'Request to Order', to: '/tools/request-to-order' },
-  { name: 'divider' },
+  divider,
   { name: 'Listen360', to: '/tools/listen360' },
-  { name: 'divider' },
+  divider,
   { name: 'Current Pricing', to: '/tools/current-pricing' },
-  { name: 'divider' },
+  divider,
   {
     name: 'Retail Calendar',
     to: `/tools/retail-calendar/${year}`,
-    current: false,
   },
-  { name: 'divider' },
+  divider,
   { name: 'Import Leads', to: '/tools/import-leads' },
-  { name: 'divider' },
+  divider,
   { name: 'Manage Products & Inventory', to: '#' },
   { name: 'Manage Lesson Voucher Pricing', to: '#' },
   { name: 'Manage Product Categories', to: '#' },
   { name: 'Manage Product Attributes', to: '#' },
 ];
 
-const settingsNavigation = [
+const settingsNavigation: NavBarMenuItems = [
   { name: 'General', to: '#' },
   { name: 'Locations', to: '#' },
 ];
 
-const navigation = [
+const navigation: NavBar = [
   { name: 'Families', to: '/families', icon: 'address-book' },
   { name: 'Schedule', navigation: scheduleNavigation, icon: 'calendar' },
   { name: 'CRM', navigation: crmNavigation, icon: 'comment' },
@@ -154,12 +150,12 @@ const navigation = [
   { name: 'POS', to: '/pos', icon: 'cash-register' },
 ];
 
-const rightNavigation = [
+const rightNavigation: NavBar = [
   { name: '', to: '#', navigation: settingsNavigation, icon: 'cog' },
   { name: '', to: '/support', icon: 'question-circle' },
 ];
 
-const userNavigation = [
+const userNavigation: NavBarMenuItems = [
   { name: 'Profile', to: '/staff/me' },
   { name: 'Sign out', to: '#' },
 ];
@@ -182,7 +178,6 @@ const userNavigation = [
           <div class="hidden md:block">
             <div class="flex items-center ml-10 space-x-4">
               <template v-for="item in navigation" :key="item.name">
-                <!-- Single Action Nav Item -->
                 <NuxtLink
                   v-if="!item.navigation"
                   :to="item.to"
@@ -201,7 +196,6 @@ const userNavigation = [
                   />
                   <span v-if="item.name">{{ item.name }}</span>
                 </NuxtLink>
-                <!-- Multi-Action Nav Item -->
                 <Menu v-else as="div" class="relative">
                   <div>
                     <MenuButton
@@ -238,17 +232,17 @@ const userNavigation = [
                       class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     >
                       <template v-for="subItem in item.navigation" :key="subItem.name">
-                        <hr v-if="subItem.name === 'divider'" />
+                        <hr v-if="item.name === 'divider'" />
                         <MenuItem v-else v-slot="{ active, close }" as="div">
                           <NuxtLink
-                            :to="subItem.to"
+                            :to="item.to"
                             :class="[
                               active ? 'bg-gray-100' : '',
                               'block px-4 py-2 text-sm text-gray-700',
                             ]"
                             @click="close"
                           >
-                            <span v-if="subItem.name">{{ subItem.name }}</span>
+                            <span>{{ subItem.name }}</span>
                           </NuxtLink>
                         </MenuItem>
                       </template>
@@ -265,7 +259,6 @@ const userNavigation = [
             <div class="hidden md:block">
               <div class="flex items-center ml-10 space-x-4">
                 <template v-for="item in rightNavigation" :key="item.name">
-                  <!-- Single Action Nav Item -->
                   <NuxtLink
                     v-if="!item.navigation"
                     :to="item.to"
@@ -284,7 +277,6 @@ const userNavigation = [
                     />
                     <span v-if="item.name">{{ item.name }}</span>
                   </NuxtLink>
-                  <!-- Multi-Action Nav Item -->
                   <Menu v-else as="div" class="relative">
                     <div>
                       <MenuButton
@@ -321,17 +313,17 @@ const userNavigation = [
                         class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                       >
                         <template v-for="subItem in item.navigation" :key="subItem.name">
-                          <hr v-if="subItem.name === 'divider'" />
+                          <hr v-if="item.name === 'divider'" />
                           <MenuItem v-else v-slot="{ active, close }" as="div">
                             <NuxtLink
-                              :to="subItem.to"
+                              :to="item.to"
                               :class="[
                                 active ? 'bg-gray-100' : '',
                                 'block px-4 py-2 text-sm text-gray-700',
                               ]"
                               @click="close"
                             >
-                              <span v-if="subItem.name">{{ subItem.name }}</span>
+                              <span>{{ subItem.name }}</span>
                             </NuxtLink>
                           </MenuItem>
                         </template>
