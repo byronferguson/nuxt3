@@ -30,9 +30,9 @@ module.exports = {
         gold: '#ffcf34',
       },
       screens: {
-        'ipad-v': '768px',
-        'ipad-h': '1024px',
-        imac: '1280px',
+        'ipad-v': '769px',
+        'ipad-h': '1025px',
+        imac: '1281px',
       },
     },
   },
