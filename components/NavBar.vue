@@ -161,7 +161,7 @@ const userNavigation: NavBarMenuItems = [
 </script>
 
 <template>
-  <Disclosure v-slot="{ open }" as="nav" class="bg-dark-primary">
+  <Disclosure v-slot="{ close, open }" as="nav" class="bg-dark-primary">
     <div class="px-4 mx-auto sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
@@ -174,7 +174,7 @@ const userNavigation: NavBarMenuItems = [
               />
             </NuxtLink>
           </div>
-          <div class="hidden md:block">
+          <div class="hidden ipad-h:block">
             <div class="flex items-center ml-10 space-x-4">
               <template v-for="item in navigation" :key="item.name">
                 <NavBarItem v-if="!item.navigation" :item="item" />
@@ -184,9 +184,9 @@ const userNavigation: NavBarMenuItems = [
           </div>
         </div>
 
-        <div class="hidden md:block">
+        <div class="hidden ipad-h:block">
           <div class="flex items-center ml-4 md:ml-6">
-            <div class="hidden md:block">
+            <div class="hidden ipad-h:block">
               <div class="flex items-center ml-10 space-x-4">
                 <template v-for="item in rightNavigation" :key="item.name">
                   <NavBarItem v-if="!item.navigation" :item="item" />
@@ -238,7 +238,8 @@ const userNavigation: NavBarMenuItems = [
             </Menu>
           </div>
         </div>
-        <div class="flex -mr-2 md:hidden">
+
+        <div class="flex -mr-2 ipad-h:hidden">
           <!-- Mobile menu button -->
           <DisclosureButton
             class="inline-flex items-center justify-center p-2 text-indigo-200 rounded-md bg-dark-primary hover:bg-medium-primary hover:bg-opacity-75 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600"
@@ -253,7 +254,19 @@ const userNavigation: NavBarMenuItems = [
 
     <DisclosurePanel class="ipad-h:hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <DisclosureButton
+        <NavBarMobile :items="[...navigation, ...rightNavigation]" :close-menu="close" />
+
+        <!-- <NavBarItem
+          v-for="item in navigation"
+          :key="item.name"
+          :item="item"
+          :class="[
+            'text-white hover:bg-medium-primary hover:bg-opacity-75',
+            'block rounded-md px-3 py-2 text-base font-medium',
+          ]"
+          @click="close"
+        /> -->
+        <!-- <DisclosureButton
           v-for="item in navigation"
           :key="item.name"
           as="a"
@@ -262,8 +275,9 @@ const userNavigation: NavBarMenuItems = [
             'text-white hover:bg-medium-primary hover:bg-opacity-75',
             'block rounded-md px-3 py-2 text-base font-medium',
           ]"
-          >{{ item.name }}</DisclosureButton
         >
+          {{ item.name }}
+        </DisclosureButton> -->
       </div>
       <div class="pt-4 pb-3 border-t border-indigo-700">
         <div class="flex items-center px-5">

@@ -10,7 +10,7 @@ useHead({
 </script>
 
 <template>
-  <div class="min-h-full">
+  <div class="min-h-screen">
     <NavBar />
 
     <main class="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">

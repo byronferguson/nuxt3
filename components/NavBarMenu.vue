@@ -26,7 +26,7 @@ defineProps<{
         ]"
       >
         <fa v-if="item.icon" :icon="['fas', item.icon]" class="inline-block mr-1 text-lg" />
-        <span v-if="item.name" class="hidden imac:block">{{ item.name }}</span>
+        <span v-if="item.name" class="hidden ipad-v:block imac:block">{{ item.name }}</span>
         <ChevronDownIcon
           class="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
           aria-hidden="true"
@@ -42,7 +42,7 @@ defineProps<{
       leave-to-class="transform scale-95 opacity-0"
     >
       <MenuItems
-        class="absolute right-0 z-10 w-64 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+        class="absolute left-0 z-10 w-64 py-1 mt-2 origin-top-left bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
       >
         <template v-for="subItem in item.navigation" :key="subItem.name">
           <hr v-if="subItem.name === 'divider'" />
