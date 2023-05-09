@@ -8,6 +8,7 @@ import {
   faCog,
   faComment,
   faQuestionCircle,
+  faSpinner,
   faUsers,
   faWrench,
 } from '@fortawesome/free-solid-svg-icons';
@@ -23,14 +24,15 @@ config.autoAddCss = false;
 library.add(
   faAddressBook,
   faCalendar,
-  faComment,
-  faUsers,
-  faWrench,
+  faCashRegister,
   faChartBar,
   faCheck,
-  faCashRegister,
   faCog,
+  faComment,
   faQuestionCircle,
+  faSpinner,
+  faUsers,
+  faWrench,
 );
 
 export default defineNuxtPlugin(nuxtApp => {
