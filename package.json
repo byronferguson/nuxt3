@@ -1,4 +1,8 @@
 {
+  "name": "lessonbuddy",
+  "version": "2.0.0-alpha.1",
+  "description": "LessonBuddy swim school management application",
+  "author": "Big Blue Swim School",
   "private": true,
   "scripts": {
     "build": "nuxt build",
