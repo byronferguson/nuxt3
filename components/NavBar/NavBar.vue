@@ -8,7 +8,7 @@ import {
   MenuItem,
   MenuItems,
 } from '@headlessui/vue';
-import { Bars3Icon, BellIcon, ChevronDownIcon, XMarkIcon } from '@heroicons/vue/24/outline';
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline';
 
 type NavBarMenuItem = {
   name: string;
@@ -255,29 +255,6 @@ const userNavigation: NavBarMenuItems = [
     <DisclosurePanel class="ipad-h:hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <NavBarMobile :items="[...navigation, ...rightNavigation]" :close-menu="close" />
-
-        <!-- <NavBarItem
-          v-for="item in navigation"
-          :key="item.name"
-          :item="item"
-          :class="[
-            'text-white hover:bg-medium-primary hover:bg-opacity-75',
-            'block rounded-md px-3 py-2 text-base font-medium',
-          ]"
-          @click="close"
-        /> -->
-        <!-- <DisclosureButton
-          v-for="item in navigation"
-          :key="item.name"
-          as="a"
-          :to="item.to"
-          :class="[
-            'text-white hover:bg-medium-primary hover:bg-opacity-75',
-            'block rounded-md px-3 py-2 text-base font-medium',
-          ]"
-        >
-          {{ item.name }}
-        </DisclosureButton> -->
       </div>
       <div class="pt-4 pb-3 border-t border-indigo-700">
         <div class="flex items-center px-5">
@@ -288,13 +265,6 @@ const userNavigation: NavBarMenuItems = [
             <div class="text-base font-medium text-white">{{ user.name }}</div>
             <div class="text-sm font-medium text-indigo-300">{{ user.email }}</div>
           </div>
-          <button
-            type="button"
-            class="flex-shrink-0 p-1 ml-auto text-indigo-200 rounded-full bg-dark-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600"
-          >
-            <span class="sr-only">View notifications</span>
-            <BellIcon class="w-6 h-6" aria-hidden="true" />
-          </button>
         </div>
         <div class="px-2 mt-3 space-y-1">
           <DisclosureButton
