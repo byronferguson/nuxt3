@@ -23,7 +23,7 @@ const year = new Date().getFullYear();
       <footer
         class="container px-12 mx-auto mt-6 mb-0 text-sm font-semibold text-right text-gray-600"
       >
-        v{{ version }}-N &copy;{{ year }} Big Blue Swim School LLC
+        v{{ version }}-N &copy; {{ year }} Big Blue Swim School LLC
       </footer>
     </div>
   </div>
