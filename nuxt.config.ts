@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { version } = require('./package.json');
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
@@ -33,6 +36,12 @@ export default defineNuxtConfig({
     'nuxt-vitest',
   ],
 
+  runtimeConfig: {
+    public: {
+      VERSION: version,
+    },
+  },
+
   build: {
     transpile: ['@fortawesome/vue-fontawesome'],
   },
@@ -40,6 +49,7 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
+
   devServer: {
     host: 'lessonbuddy.local',
     port: 3000,
