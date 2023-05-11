@@ -19,6 +19,7 @@ module.exports = {
         'bright-blue': '#FFCF34',
         'bold-blue': '#99E3FA',
         'big-blue': '#2157D6',
+        // Blue Zodiac ??
         'dark-primary': {
           DEFAULT: '#1F145D',
           50: '#E9E6FA',
@@ -75,7 +76,8 @@ module.exports = {
           900: '#5F0904',
           950: '#440703',
         },
-        blush: {
+        // https://chir.ag/projects/name-that-color/#FFD0D3
+        cosmos: {
           DEFAULT: '#FFD0D3',
           50: '#FFFFFF',
           100: '#FFF9F9',
@@ -89,7 +91,8 @@ module.exports = {
           900: '#460004',
           950: '#2A0003',
         },
-        gold: {
+        // https://chir.ag/projects/name-that-color/#FFCF34
+        sunglow: {
           DEFAULT: '#FFCF34',
           50: '#FFFAEC',
           100: '#FFF6D7',

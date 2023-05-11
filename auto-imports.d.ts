@@ -52,7 +52,9 @@ declare global {
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useDates: typeof import('./composables/use-dates')['useDates']
   const useLink: typeof import('vue-router')['useLink']
+  const useNest: typeof import('./composables/use-nest')['useNest']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useSlots: typeof import('vue')['useSlots']
@@ -118,7 +120,9 @@ declare module 'vue' {
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useDates: UnwrapRef<typeof import('./composables/use-dates')['useDates']>
     readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
+    readonly useNest: UnwrapRef<typeof import('./composables/use-nest')['useNest']>
     readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>

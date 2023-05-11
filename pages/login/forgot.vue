@@ -29,13 +29,16 @@ const errors = ref({
   message: 'lorem ipsum',
 });
 
-function forgot() {
+const authStore = useAuthStore();
+
+async function forgot() {
   console.log('Sending forgot password email');
+  await authStore.forgot(emailAddress.value);
 }
 </script>
 
 <template>
-  <NuxtLayout name="login">
+  <NuxtLayout name="auth">
     <div class="pt-24">
       <div class="w-full max-w-sm mx-auto">
         <div

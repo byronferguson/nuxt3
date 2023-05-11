@@ -36,6 +36,10 @@ export default defineNuxtConfig({
     'nuxt-vitest',
   ],
 
+  imports: {
+    dirs: ['stores'],
+  },
+
   runtimeConfig: {
     public: {
       VERSION: version,
@@ -53,5 +57,12 @@ export default defineNuxtConfig({
   devServer: {
     host: 'lessonbuddy.local',
     port: 3000,
+  },
+
+  pinia: {
+    autoImports: [
+      // automatically imports `defineStore`
+      'defineStore', // import { defineStore } from 'pinia'
+    ],
   },
 });

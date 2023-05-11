@@ -4,6 +4,7 @@
     "headlessui",
     "heroicons",
     "imac",
+    "ofetch",
     "Persistedstate",
     "pinia",
     "vueuse"
