@@ -38,7 +38,11 @@ export default defineEventHandler(async event => {
     },
   });
 
+  const domain =
+    window.location.hostname === 'lessonbuddy.local' ? 'lessonbuddy.local' : 'lessonbuddy.com';
+
   setCookie(event, 'authToken', token, {
+    domain,
     expires: parse(expires, 'yyyy-MM-dd HH:mm:ss', new Date()),
   });
 

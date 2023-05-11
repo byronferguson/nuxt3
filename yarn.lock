@@ -8708,7 +8708,7 @@ nuxt-vitest@^0.6.12:
     vitest "^0.30.0"
     vitest-environment-nuxt "0.6.12"
 
-nuxt@3.4.3, nuxt@^3.4.3:
+nuxt@^3.4.3:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-3.4.3.tgz#0db58e3a70afa3c06744868cd6a13e5f0d83dbf1"
   integrity sha512-rOEdhHRH33m3L7aJDO7N8C+NC2vSa2mC/0hH/ePmg2S03qkzS0bVg1pIWW9ESDV5UVPFtfhOGoDTEkLJqvE18A==
