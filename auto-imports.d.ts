@@ -53,6 +53,7 @@ declare global {
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useDates: typeof import('./composables/use-dates')['useDates']
+  const useLessonBuddyCookie: typeof import('./composables/use-lesson-buddy-cookie')['useLessonBuddyCookie']
   const useLink: typeof import('vue-router')['useLink']
   const useNest: typeof import('./composables/use-nest')['useNest']
   const useRoute: typeof import('vue-router')['useRoute']
@@ -121,6 +122,7 @@ declare module 'vue' {
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useDates: UnwrapRef<typeof import('./composables/use-dates')['useDates']>
+    readonly useLessonBuddyCookie: UnwrapRef<typeof import('./composables/use-lesson-buddy-cookie')['useLessonBuddyCookie']>
     readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
     readonly useNest: UnwrapRef<typeof import('./composables/use-nest')['useNest']>
     readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>

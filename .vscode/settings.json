@@ -1,13 +1,16 @@
 {
   "cSpell.words": [
+    "casl",
     "fortawesome",
     "headlessui",
     "heroicons",
     "imac",
     "ofetch",
+    "paycor",
     "Persistedstate",
     "pinia",
-    "vueuse"
+    "vueuse",
+    "zipcode"
   ],
   "svg.preview.background": "editor",
   "vue.codeActions.enabled": false
