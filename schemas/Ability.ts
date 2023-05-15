@@ -1,15 +1,20 @@
-import { PureAbility as Ability } from '@casl/ability';
-const ability = new Ability();
+import { PureAbility } from '@casl/ability';
+import { z } from 'zod';
+
+const ability = new PureAbility();
 export default ability;
 
-export type AbilityArray = {
-  0: string;
-  1: string;
-} & Array<string>;
+export const abilitySchema = z.object({
+  action: z.string(),
+  subject: z.string(),
+});
 
-export type AbilityMeta =
-  | {
-      or?: AbilityArray[];
-      and?: AbilityArray[];
-    }
-  | AbilityArray[];
+export const abilitiesSchema = z.array(abilitySchema);
+
+export type Ability = z.infer<typeof abilitySchema>;
+export type Abilities = z.infer<typeof abilitiesSchema>;
+
+type Action = 'create' | 'read' | 'update' | 'delete' | 'manage';
+type Subject = string;
+
+export type AppAbility = PureAbility<[Action, Subject]>;
