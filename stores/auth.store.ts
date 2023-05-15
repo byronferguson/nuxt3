@@ -1,34 +1,36 @@
-import { parse } from 'date-fns';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { ability } from '~/plugins/casl';
+import { Abilities } from '~/schemas/Ability';
+import { Auth } from '~/schemas/Auth';
+import { User } from '~/schemas/User';
 
-interface Auth {
-  token: string;
-  expires: string;
-}
+// interface Auth {
+//   token: string;
+//   expires: string;
+// }
 
-interface Location {
-  id: number;
-  name: string;
-  slug: string;
-}
+// interface Location {
+//   id: number;
+//   name: string;
+//   slug: string;
+// }
 
-interface Organization {
-  id: number;
-  name: string;
-  slug: string;
-}
+// interface Organization {
+//   id: number;
+//   name: string;
+//   slug: string;
+// }
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  locations: Location[];
-  organization: Organization | null;
-}
+// interface User {
+//   id: number;
+//   name: string;
+//   email: string;
+//   phone: string;
+//   locations: Location[];
+//   organization: Organization | null;
+// }
 
-export interface AuthState {
+type AuthState = {
   user: User | null;
   token: string;
   expiresAt: Date | null;
@@ -36,7 +38,7 @@ export interface AuthState {
   authMessage: string;
   resetUser: User | null;
   resetMessage: string;
-}
+};
 
 export const useAuthStore = defineStore('auth', {
   state: () =>
@@ -76,13 +78,10 @@ export const useAuthStore = defineStore('auth', {
         });
 
         this.token = token;
-        this.expiresAt = parse(expires, 'yyyy-MM-dd HH:mm:ss', new Date());
+        this.expiresAt = expires;
 
-        await Promise.all([
-          this.updateAuthUser(),
-          this.fetchAbilities(),
-          // await dispatch('fetchConfig', null, { root: true }),
-        ]);
+        await Promise.all([this.updateAuthUser(), this.fetchAbilities()]);
+        await navigateTo('/', { replace: true });
       } catch (error: any) {
         this.authMessage =
           error.response.status === 401 ? 'Invalid Username/Password' : 'Unhandled Error';
@@ -96,6 +95,7 @@ export const useAuthStore = defineStore('auth', {
     async updateAuthUser() {
       try {
         this.user = await $fetch<User>('/api/auth/me');
+        this.user.employee?.locations?.sort((a, b) => a.name.localeCompare(b.name));
       } catch (error) {
         console.error(error);
         throw new Error('User not found');
@@ -107,7 +107,7 @@ export const useAuthStore = defineStore('auth', {
      */
     async fetchAbilities() {
       try {
-        const abilities = await $fetch('/api/auth/abilities');
+        const abilities = await $fetch<Abilities>('/api/auth/abilities');
         ability.update(abilities);
       } catch (err) {
         console.error(err);
@@ -118,19 +118,19 @@ export const useAuthStore = defineStore('auth', {
      * Fetches the user's locations and updates the locations array on the user object
      * FIXME: seems like the only benefit is mapping the organization to an object
      */
-    async updateAuthUserLocations() {
-      // if (!this.user) return;
-      // const locationIds = state.user.locations.map(location => location.id);
-      // const promises = locationIds.map(id => LocationService.getLocationById(id));
-      // const locations = (await Promise.all(promises))
-      //   .map(response => response.data)
-      //   .map(location => {
-      //     if (location.organization)
-      //       location.organization = Organization.fromProps(location.organization);
-      //     return location;
-      //   });
-      // this.user.locations = locations.sort((a, b) => a.name.localeCompare(b.name));
-    },
+    // async updateAuthUserLocations() {
+    //   if (!this.user) return;
+    //   const locationIds = state.user.locations.map(location => location.id);
+    //   const promises = locationIds.map(id => LocationService.getLocationById(id));
+    //   const locations = (await Promise.all(promises))
+    //     .map(response => response.data)
+    //     .map(location => {
+    //       if (location.organization)
+    //         location.organization = Organization.fromProps(location.organization);
+    //       return location;
+    //     });
+    //   this.user.locations = locations.sort((a, b) => a.name.localeCompare(b.name));
+    // },
 
     forgot(emailAddress: string) {
       $fetch('/api/auth/forgot', {
@@ -141,46 +141,45 @@ export const useAuthStore = defineStore('auth', {
       });
     },
 
-    //   async checkResetHash(
-    //     { commit }: ActionContext<AuthState, RootState>,
-    //     { hash }: any,
-    //   ): Promise<any> {
-    //     commit('UPDATE_RESET_MESSAGE', '');
-    //     try {
-    //       const response = await api.get<any>(`/v2/auth/forgot/${hash}`);
-    //       commit('UPDATE_RESET_USER', response.data);
-    //     } catch (err) {
-    //       commit('UPDATE_RESET_MESSAGE', 'Invalid or Expired Reset Code');
-    //       throw err;
-    //     }
-    //   },
+    async checkResetHash(hash: string) {
+      this.resetMessage = '';
 
-    //   async updatePassword(
-    //     { commit }: ActionContext<AuthState, RootState>,
-    //     { hash, password }: any,
-    //   ): Promise<any> {
-    //     commit('UPDATE_RESET_MESSAGE', '');
-    //     try {
-    //       await api.patch<any>(`/v2/auth/forgot/${hash}`, {
-    //         newPassword: password,
-    //       });
-    //     } catch (err) {
-    //       commit('UPDATE_RESET_MESSAGE', 'Error resetting password');
-    //       throw err;
-    //     }
-    //   },
+      try {
+        const user = await $fetch<User>(`/api/auth/forgot/${hash}`);
+        this.resetUser = user;
+      } catch (err) {
+        this.resetMessage = 'Invalid or Expired Reset Code';
+        throw err;
+      }
+    },
 
-    //   async logout({ state, commit }: ActionContext<AuthState, RootState>): Promise<void> {
-    //     try {
-    //       if (state.token !== '') await api.post('/v2/auth/logout');
-    //     } catch (err) {
-    //       console.error(err);
-    //     }
-    //     clearAuthToken();
-    //     commit('UPDATE_TOKEN', '');
-    //     commit('UPDATE_USER', null);
-    //     Ability.update([]);
-    //   },
+    async updatePassword(hash: string, newPassword: string) {
+      this.resetMessage = '';
+      try {
+        await $fetch(`/v2/auth/forgot/${hash}`, {
+          method: 'PATCH',
+          body: {
+            newPassword,
+          },
+        });
+      } catch (err) {
+        this.resetMessage = 'Error resetting password';
+        throw err;
+      }
+    },
+
+    async logout() {
+      try {
+        if (this.token !== '') await $fetch('/api/auth/logout', { method: 'POST' });
+      } catch (err) {
+        console.error(err);
+      }
+
+      this.token = '';
+      this.user = null;
+      this.resetUser = null;
+      ability.update([]);
+    },
 
     //   loginRedirectPath({ commit }: ActionContext<AuthState, RootState>, newPath: string): void {
     //     commit('UPDATE_LOGIN_REDIRECT_PATH', newPath);

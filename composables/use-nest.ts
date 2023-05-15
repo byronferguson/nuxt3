@@ -1,6 +1,7 @@
 import type { H3Event } from 'h3';
 import type { FetchOptions, FetchRequest } from 'ofetch';
 import { ofetch } from 'ofetch';
+import { useLessonBuddyCookie } from './use-lesson-buddy-cookie';
 
 // Types pulled from ofetch
 interface ResponseMap {
@@ -19,7 +20,7 @@ export function useNest<T = any, R extends ResponseType = 'json'>(
   request: FetchRequest,
   options?: FetchOptions<R>,
 ): Promise<MappedType<R, T>> {
-  const token = getCookie(event, 'authToken') || '';
+  const token = useLessonBuddyCookie(event).get();
   const baseURL = 'https://develop.api.lessonbuddy.com'; // grab out of config
 
   const baseOptions: FetchOptions<R> = {

@@ -1,36 +1,11 @@
-import { parse } from 'date-fns';
+import { useLessonBuddyCookie } from '~/composables/use-lesson-buddy-cookie';
 import { useNest } from '~/composables/use-nest';
-
-interface Auth {
-  token: string;
-  expires: string;
-}
-
-interface Location {
-  id: number;
-  name: string;
-  slug: string;
-}
-
-interface Organization {
-  id: number;
-  name: string;
-  slug: string;
-}
-
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  locations: Location[];
-  organization: Organization | null;
-}
+import { Auth, authSchema } from '~/schemas/Auth';
 
 export default defineEventHandler(async event => {
   const { username, password } = await readBody(event);
 
-  const { token, expires } = await useNest<Auth>(event, '/v2/auth/login', {
+  const data = await useNest<Auth>(event, '/v2/auth/login', {
     method: 'POST',
     body: {
       username,
@@ -38,25 +13,12 @@ export default defineEventHandler(async event => {
     },
   });
 
-  const domain =
-    window.location.hostname === 'lessonbuddy.local' ? 'lessonbuddy.local' : 'lessonbuddy.com';
+  const { expires, token } = authSchema.parse(data);
 
-  setCookie(event, 'authToken', token, {
-    domain,
-    expires: parse(expires, 'yyyy-MM-dd HH:mm:ss', new Date()),
-  });
+  useLessonBuddyCookie(event).set(token, expires);
 
   return {
     token,
     expires,
   };
-
-  // return $fetch<User>('/v2/auth/login', {
-  //   method: 'POST',
-  //   baseURL: BASE_URL,
-  //   body: {
-  //     username,
-  //     password,
-  //   },
-  // });
 });
