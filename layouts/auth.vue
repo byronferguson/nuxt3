@@ -12,6 +12,5 @@ useHead({
 <template>
   <div class="min-h-screen bg-dark-primary">
     <slot />
-    <PageFooter />
   </div>
 </template>
