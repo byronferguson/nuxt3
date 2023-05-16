@@ -1,5 +1,6 @@
 <template>
-  <div>
-    <h1 class="text-2xl">Tools - Listen360</h1>
-  </div>
+  <PageContent>
+    <template #heading>Tools - Listen360</template>
+    <p>This will need to handle logging into Listen360 before opening a listen360 window</p>
+  </PageContent>
 </template>

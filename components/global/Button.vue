@@ -24,7 +24,7 @@ withDefaults(defineProps<ButtonProps>(), {
 
 <style lang="postcss" scoped>
 .btn {
-  @apply px-4 py-2 font-bold rounded;
+  @apply px-4 py-2 font-bold rounded text-base;
 
   &:focus {
     @apply outline-none;
@@ -44,7 +44,11 @@ withDefaults(defineProps<ButtonProps>(), {
 }
 
 .success {
-  @apply bg-green-500 text-white;
+  @apply bg-green-600 text-white;
+
+  &:hover {
+    @apply bg-green-700;
+  }
 }
 
 .danger {
