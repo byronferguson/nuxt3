@@ -1,6 +1,9 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({
   layout: false,
+  meta: {
+    abilities: [['view', 'families']],
+  },
 });
 </script>
 

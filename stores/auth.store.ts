@@ -32,6 +32,7 @@ import { User } from '~/schemas/User';
 
 type AuthState = {
   user: User | null;
+  abilities: Abilities;
   token: string;
   expiresAt: Date | null;
   loginRedirectPath: string;
@@ -44,6 +45,7 @@ export const useAuthStore = defineStore('auth', {
   state: () =>
     ({
       user: null,
+      abilities: [],
       token: '',
       expiresAt: null,
       loginRedirectPath: '',
@@ -84,7 +86,7 @@ export const useAuthStore = defineStore('auth', {
         await navigateTo('/', { replace: true });
       } catch (error: any) {
         this.authMessage =
-          error.response.status === 401 ? 'Invalid Username/Password' : 'Unhandled Error';
+          error?.response?.status === 401 ? 'Invalid Username/Password' : 'Unhandled Error';
 
         console.error(error);
 
@@ -107,11 +109,15 @@ export const useAuthStore = defineStore('auth', {
      */
     async fetchAbilities() {
       try {
-        const abilities = await $fetch<Abilities>('/api/auth/abilities');
-        ability.update(abilities);
+        this.abilities = await $fetch<Abilities>('/api/auth/abilities');
+        this.updateAbilities();
       } catch (err) {
         console.error(err);
       }
+    },
+
+    updateAbilities() {
+      ability.update(this.abilities ?? []);
     },
 
     /**
@@ -185,7 +191,12 @@ export const useAuthStore = defineStore('auth', {
     //     commit('UPDATE_LOGIN_REDIRECT_PATH', newPath);
     //   },
   },
-  persist: true,
+  persist: {
+    storage: persistedState.localStorage,
+    afterRestore({ store }) {
+      store.updateAbilities();
+    },
+  },
 });
 
 // export const actions: ActionTree<AuthState, RootState> = {
