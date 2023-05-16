@@ -10,8 +10,9 @@ interface ButtonProps {
   color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
 }
 
-const props = withDefaults(defineProps<ButtonProps>(), {
+withDefaults(defineProps<ButtonProps>(), {
   type: 'button',
+  color: 'primary',
 });
 </script>
 
