@@ -33,6 +33,7 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/tailwindcss',
     'nuxt-headlessui',
+    'nuxt-typed-router',
     'nuxt-vitest',
   ],
 
@@ -47,7 +48,7 @@ export default defineNuxtConfig({
   },
 
   build: {
-    transpile: ['@fortawesome/vue-fontawesome'],
+    transpile: ['@fortawesome/vue-fontawesome', '@vuepic/vue-datepicker'],
   },
 
   devtools: {

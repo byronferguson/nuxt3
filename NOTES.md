@@ -4,6 +4,11 @@ https://nuxt.com/docs/api/commands/addyarn
 https://nuxt.com/docs/api/composables/use-app-config
 https://nuxt.com/docs/guide/directory-structure/server#server-middleware
 
+## Typed Routes
+
+https://nuxt-typed-router.vercel.app/guide
+https://github.com/nuxt/nuxt/pull/20367 (the native experimental feature which could replace the above extension)
+
 ## CASL
 
 https://casl.js.org/v6/en/api/casl-ability
