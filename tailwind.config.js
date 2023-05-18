@@ -12,7 +12,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        // sans: ['Inter var', ...defaultTheme.fontFamily.sans], // TailwindUI uses Inter
+        sans: ['Gibson', ...defaultTheme.fontFamily.sans],
+        serif: ['Midnight Chalker', ...defaultTheme.fontFamily.serif],
+        display: ['Gibson', ...defaultTheme.fontFamily.sans],
+        body: ['Gibson', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         // TODO: Remove these colors, using for Table import for now START
