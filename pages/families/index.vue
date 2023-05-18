@@ -4,19 +4,24 @@ definePageMeta({
     abilities: [['view', 'families']],
   },
 });
+
+const pages = [{ name: 'Families', href: '#', current: true }];
 </script>
 
 <template>
   <PageContent>
-    <template #heading>
-      <div class="flex flex-row gap-x-3">
-        <fa :icon="['fas', 'users']" class="inline-block text-2xl" />Families
-        <span class="flex-grow" />
+    <template #breadcrumbs>
+      <Breadcrumbs :pages="pages" />
+    </template>
+    <template #header>
+      <PageHeading title="Families" icon="users">
         <Button color="success">
           <fa :icon="['fas', 'plus']" />
           Add New Family
         </Button>
-      </div>
+      </PageHeading>
     </template>
+
+    <main>Here is the main body of the page</main>
   </PageContent>
 </template>

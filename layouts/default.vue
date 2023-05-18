@@ -1,7 +1,7 @@
 <script setup lang="ts">
 useHead({
   htmlAttrs: {
-    class: 'h-full bg-gray-100',
+    class: 'h-full bg-slate-200',
   },
   bodyAttrs: {
     class: 'h-full',

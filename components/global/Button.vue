@@ -24,7 +24,7 @@ withDefaults(defineProps<ButtonProps>(), {
 
 <style lang="postcss" scoped>
 .btn {
-  @apply px-4 py-2 font-bold rounded text-base;
+  @apply px-4 py-2 font-medium rounded text-base;
 
   &:focus {
     @apply outline-none;
