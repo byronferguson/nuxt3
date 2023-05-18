@@ -17,6 +17,7 @@ declare module '@vue/runtime-core' {
     GlobalPageFooter: typeof import('./components/global/PageFooter.vue')['default']
     GlobalPageHeader: typeof import('./components/global/PageHeader.vue')['default']
     GlobalPageHeading: typeof import('./components/global/PageHeading.vue')['default']
+    GlobalSelect: typeof import('./components/global/Select.vue')['default']
     GlobalTable: typeof import('./components/global/Table.vue')['default']
     Loader: typeof import('./components/Loader.vue')['default']
     NavBar: typeof import('./components/NavBar.vue')['default']
