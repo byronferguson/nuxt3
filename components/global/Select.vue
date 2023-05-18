@@ -30,7 +30,7 @@ const selectedItem = defineModel<SelectOption>();
     </ListboxLabel>
     <div class="relative mt-2">
       <ListboxButton
-        class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-medium-primary sm:text-sm sm:leading-6"
       >
         <span v-if="!selectedItem" class="block truncate" :aria-placeholder="placeholder">
           {{ placeholder }}
@@ -58,7 +58,7 @@ const selectedItem = defineModel<SelectOption>();
           >
             <li
               :class="[
-                active ? 'bg-indigo-600 text-white' : 'text-gray-900',
+                active ? 'bg-medium-primary text-white' : 'text-gray-900',
                 'relative cursor-default select-none py-2 pl-8 pr-4',
               ]"
             >
@@ -69,7 +69,7 @@ const selectedItem = defineModel<SelectOption>();
               <span
                 v-if="selected"
                 :class="[
-                  active ? 'text-white' : 'text-indigo-600',
+                  active ? 'text-white' : 'text-medium-primary',
                   'absolute inset-y-0 left-0 flex items-center pl-1.5',
                 ]"
               >
