@@ -3,6 +3,8 @@ const { version } = require('./package.json');
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false, // Disable Server Side rendering
+
   app: {
     head: {
       title: 'LessonBuddy',

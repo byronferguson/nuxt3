@@ -15,6 +15,14 @@ module.exports = {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
       colors: {
+        // TODO: Remove these colors, using for Table import for now START
+        'primary-dark': '#1F145D',
+        primary: '#2157D6',
+        'primary-light': '#99E3FA',
+        secondary: '#F8564B',
+        'secondary-light': '#FFD0D3',
+        accent: '#FFCF34',
+        // TODO: Remove these colors, using for Table import for now END
         'baby-blue': '#F8564B',
         'bright-blue': '#FFCF34',
         'bold-blue': '#99E3FA',
