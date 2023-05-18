@@ -68,4 +68,13 @@ export default defineNuxtConfig({
       'defineStore', // import { defineStore } from 'pinia'
     ],
   },
+
+  vite: {
+    vue: {
+      script: {
+        defineModel: true,
+        propsDestructure: true,
+      },
+    },
+  },
 });
