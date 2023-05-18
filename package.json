@@ -76,6 +76,7 @@
     "date-fns-tz": "^2.0.0",
     "nuxt-typed-router": "^3.2.2",
     "pinia-plugin-persistedstate": "^3.1.0",
+    "pluralize": "^8.0.0",
     "zod": "^3.21.4"
   }
 }
