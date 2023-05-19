@@ -30,6 +30,66 @@ async function login() {
 </script>
 
 <template>
+  <div class="flex flex-col justify-center flex-1 min-h-full px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <img
+        class="w-auto mx-auto h-36"
+        src="~/assets/images/BB_Logo_Wordmark_RGB_HorizontalWhite.png"
+        alt="LessonBuddy Logo"
+      />
+    </div>
+
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <form class="space-y-6" @submit.prevent="login">
+        <div>
+          <label for="email" class="block text-sm font-medium leading-6 text-white">Email</label>
+          <div class="mt-2">
+            <input
+              id="email"
+              v-model="username"
+              name="email"
+              type="email"
+              autocomplete="email"
+              class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-medium-primary sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between">
+            <label for="password" class="block text-sm font-medium leading-6 text-white"
+              >Password</label
+            >
+            <div class="text-sm">
+              <NuxtLink
+                to="/login/forgot"
+                class="font-medium text-medium-primary-400 hover:text-medium-primary-300 focus:ring-medium-primary"
+              >
+                Forgot password?
+              </NuxtLink>
+            </div>
+          </div>
+          <div class="mt-2">
+            <input
+              id="password"
+              v-model="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-medium-primary sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+
+        <Button color="secondary" type="submit" class="w-full" :disabled="loginInProgress">
+          Sign in
+        </Button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<!-- <template>
   <div class="pt-24">
     <div class="w-full max-w-sm mx-auto">
       <div
@@ -101,4 +161,4 @@ async function login() {
       </p>
     </div>
   </div>
-</template>
+</template> -->
