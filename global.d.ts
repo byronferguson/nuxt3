@@ -2,7 +2,7 @@ import { AbilityMeta } from './schemas/Ability';
 
 declare module '#app' {
   interface PageMeta {
-    meta: {
+    meta?: {
       abilities?: AbilityMeta;
     };
   }

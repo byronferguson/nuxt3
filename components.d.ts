@@ -13,6 +13,8 @@ declare module '@vue/runtime-core' {
     GlobalBreadcrumbs: typeof import('./components/global/Breadcrumbs.vue')['default']
     GlobalButton: typeof import('./components/global/Button.vue')['default']
     GlobalDatePicker: typeof import('./components/global/DatePicker.vue')['default']
+    GlobalLoader: typeof import('./components/global/Loader.vue')['default']
+    GlobalNavBar: typeof import('./components/global/NavBar.vue')['default']
     GlobalPageContent: typeof import('./components/global/PageContent.vue')['default']
     GlobalPageFooter: typeof import('./components/global/PageFooter.vue')['default']
     GlobalPageHeader: typeof import('./components/global/PageHeader.vue')['default']

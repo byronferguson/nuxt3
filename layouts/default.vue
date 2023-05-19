@@ -11,7 +11,7 @@ useHead({
 
 <template>
   <div class="min-h-screen">
-    <NavBar />
+    <!-- <NavBar /> -->
 
     <div
       class="flex flex-col py-6 mx-auto max-w-7xl sm:px-6 lg:px-8 min-h-screen-minus-nav gap-y-4"

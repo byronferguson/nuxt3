@@ -1,3 +1,4 @@
+import vuetify from 'vite-plugin-vuetify';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { version } = require('./package.json');
 
@@ -22,21 +23,22 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
         { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
         { rel: 'manifest', href: '/site.webmanifest' },
-        { rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' },
       ],
     },
   },
 
-  css: ['@fortawesome/fontawesome-svg-core/styles.css', '@/assets/css/main.css'],
+  css: ['@fortawesome/fontawesome-svg-core/styles.css'],
 
   modules: [
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@nuxtjs/tailwindcss',
-    'nuxt-headlessui',
     'nuxt-typed-router',
     'nuxt-vitest',
+    (_options, nuxt) => {
+      // @ts-ignore
+      nuxt.hooks.hook('vite:extendConfig', config => config.plugins.push(vuetify()));
+    },
   ],
 
   imports: {
