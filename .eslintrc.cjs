@@ -18,5 +18,6 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'vue/no-setup-props-destructure': 'off', // only off because of the experimental feature which allows this
   },
 };

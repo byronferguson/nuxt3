@@ -32,7 +32,11 @@ const selectedItem = defineModel<SelectOption>();
       <ListboxButton
         class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-medium-primary sm:text-sm sm:leading-6"
       >
-        <span v-if="!selectedItem" class="block truncate" :aria-placeholder="placeholder">
+        <span
+          v-if="!selectedItem"
+          class="block text-gray-400 truncate"
+          :aria-placeholder="placeholder"
+        >
           {{ placeholder }}
         </span>
         <span v-else class="block truncate">{{ selectedItem.name }}</span>

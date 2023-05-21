@@ -41,6 +41,14 @@ withDefaults(defineProps<ButtonProps>(), {
 
 .secondary {
   @apply bg-medium-primary text-white;
+
+  &:hover {
+    @apply bg-medium-primary-700;
+  }
+
+  &:disabled {
+    @apply bg-medium-primary-300 text-gray-500;
+  }
 }
 
 .success {

@@ -4,32 +4,6 @@ import { Abilities } from '~/schemas/Ability';
 import { Auth } from '~/schemas/Auth';
 import { User } from '~/schemas/User';
 
-// interface Auth {
-//   token: string;
-//   expires: string;
-// }
-
-// interface Location {
-//   id: number;
-//   name: string;
-//   slug: string;
-// }
-
-// interface Organization {
-//   id: number;
-//   name: string;
-//   slug: string;
-// }
-
-// interface User {
-//   id: number;
-//   name: string;
-//   email: string;
-//   phone: string;
-//   locations: Location[];
-//   organization: Organization | null;
-// }
-
 type AuthState = {
   user: User | null;
   abilities: Abilities;

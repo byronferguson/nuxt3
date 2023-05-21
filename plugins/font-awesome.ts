@@ -10,6 +10,7 @@ import {
   faComment,
   faQuestionCircle,
   faSpinner,
+  faSwimmer,
   faUsers,
   faWrench,
 } from '@fortawesome/free-solid-svg-icons';
@@ -33,6 +34,7 @@ library.add(
   faComment,
   faQuestionCircle,
   faSpinner,
+  faSwimmer,
   faUsers,
   faWrench,
 );

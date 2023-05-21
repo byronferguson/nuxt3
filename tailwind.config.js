@@ -119,6 +119,9 @@ module.exports = {
           950: '#372A00',
         },
       },
+      maxWidth: {
+        '8xl': '90rem',
+      },
       // Consider reducing breakpoints to align with expected iPads and iMacs, and rename them to match
       // https://tailwindcss.com/docs/screens#using-custom-screen-names
       screens: {

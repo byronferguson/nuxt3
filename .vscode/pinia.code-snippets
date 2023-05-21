@@ -1,0 +1,24 @@
+{
+  "Initialize Pinia Store": {
+    "prefix": "~pinia",
+    "body": [
+      "import { acceptHMRUpdate, defineStore } from 'pinia';",
+      "",
+      "type ${1/(.*)/${1:/pascalcase}/}State = {",
+      "  $0",
+      "};",
+      "",
+      "export const use${1/(.*)/${1:/pascalcase}/}Store = defineStore('${1/(.*)/${1:/downcase}/}', {",
+      "  state: () => ({} as ${1/(.*)/${1:/pascalcase}/}State),",
+      "  getters: {},",
+      "  actions: {},",
+      "});",
+      "",
+      "if (import.meta.hot) {",
+      "  import.meta.hot.accept(acceptHMRUpdate(use${1/(.*)/${1:/pascalcase}/}Store, import.meta.hot));",
+      "}",
+      ""
+    ],
+    "description": "Initialize Pinia Store"
+  }
+}
