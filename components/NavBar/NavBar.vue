@@ -26,11 +26,11 @@ const year = now.getFullYear();
 const [today, timeWithTz] = now.toISOString().split('T');
 const [time] = timeWithTz.split('.');
 
-const user = {
-  name: 'Byron Ferguson',
-  email: 'byron@bigblueswimschool.com',
-  imageUrl: '/images/profile.jpg',
-};
+const authStore = useAuthStore();
+
+const user = computedEager(() => authStore.user);
+const defaultLocationId = computedEager(() => user.value?.defaultLocationId ?? 0);
+const photoUrl = computedEager(() => user.value?.employee?.photoUrl ?? '/images/profile.jpg');
 
 const divider: NavBarMenuItem = { name: 'divider', to: '#' };
 
@@ -43,29 +43,29 @@ const scheduleNavigation: NavBarMenuItems = [
   divider,
   {
     name: 'Regular Schedule',
-    to: `/schedule/${locationId}/${today}`,
+    to: `/schedule/${defaultLocationId.value}/${today}`,
   },
   {
     name: 'Check-in',
-    to: `/schedule/check-in/${locationId}/${today}/${time}`,
+    to: `/schedule/check-in/${defaultLocationId.value}/${today}/${time}`,
   },
   {
     name: 'Staff Schedule',
-    to: `/schedule/staff/${locationId}/${today}/all`,
+    to: `/schedule/staff/${defaultLocationId.value}/${today}/all`,
   },
   { name: 'divider', to: '#' },
   {
     name: 'Absence Report',
-    to: `/reports/absence/${locationId}/${today}`,
+    to: `/reports/absence/${defaultLocationId.value}/${today}`,
   },
   divider,
   {
     name: 'Schedule Suppressions',
-    to: `/schedule/suppressions/${locationId}/${year}`,
+    to: `/schedule/suppressions/${defaultLocationId.value}/${year}`,
   },
   {
     name: 'Assign Trial Lessons',
-    to: `/schedule/assign-trial-lessons/${locationId}/${today}`,
+    to: `/schedule/assign-trial-lessons/${defaultLocationId.value}/${today}`,
   },
 ];
 
@@ -77,30 +77,30 @@ const crmNavigation: NavBarMenuItems = [
 const staffNavigation: NavBarMenuItems = [
   {
     name: 'Week Schedule - By Employee',
-    to: `/staff/schedule/week/by-employee/${locationId}/${today}`,
+    to: `/staff/schedule/week/by-employee/${defaultLocationId.value}/${today}`,
   },
   {
     name: 'Week Schedule - By Position',
-    to: `/staff/schedule/week/by-position/${locationId}/${today}`,
+    to: `/staff/schedule/week/by-position/${defaultLocationId.value}/${today}`,
   },
   {
     name: 'Day Schedule',
-    to: `/staff/schedule/day/${locationId}/${today}`,
+    to: `/staff/schedule/day/${defaultLocationId.value}/${today}`,
   },
   divider,
   {
     name: 'Substitutes Schedule',
-    to: `/staff/schedule/substitutes/${locationId}/${today}`,
+    to: `/staff/schedule/substitutes/${defaultLocationId.value}/${today}`,
   },
   {
     name: 'Check-in',
-    to: `/staff/schedule/check-in/${locationId}/${today}`,
+    to: `/staff/schedule/check-in/${defaultLocationId.value}/${today}`,
   },
   divider,
-  { name: 'Employees', to: `/staff/${locationId}` },
+  { name: 'Employees', to: `/staff/${defaultLocationId.value}` },
   {
     name: 'Hours',
-    to: `/staff/schedule/hours/${locationId}/${today}`,
+    to: `/staff/schedule/hours/${defaultLocationId.value}/${today}`,
   },
   { name: 'PTO Requests', to: `/staff/pto/requests` },
 ];
@@ -202,7 +202,7 @@ const userNavigation: NavBarMenuItems = [
                   class="flex items-center max-w-xs text-sm rounded-full bg-dark-primary focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600"
                 >
                   <span class="sr-only">Open user menu</span>
-                  <img class="w-8 h-8 rounded-full" :src="user.imageUrl" alt="" />
+                  <img class="w-8 h-8 rounded-full" :src="photoUrl" alt="" />
                 </MenuButton>
               </div>
               <transition
@@ -259,11 +259,13 @@ const userNavigation: NavBarMenuItems = [
       <div class="pt-4 pb-3 border-t border-indigo-700">
         <div class="flex items-center px-5">
           <div class="flex-shrink-0">
-            <img class="w-10 h-10 rounded-full" :src="user.imageUrl" alt="" />
+            <img class="w-10 h-10 rounded-full" :src="photoUrl" alt="" />
           </div>
           <div class="ml-3">
-            <div class="text-base font-medium text-white">{{ user.name }}</div>
-            <div class="text-sm font-medium text-indigo-300">{{ user.email }}</div>
+            <div class="text-base font-medium text-white">{{ user?.fullName }}</div>
+            <div class="text-sm font-medium text-indigo-300">
+              {{ user?.employee?.emailAddress }}
+            </div>
           </div>
         </div>
         <div class="px-2 mt-3 space-y-1">

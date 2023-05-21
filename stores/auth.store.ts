@@ -31,6 +31,9 @@ export const useAuthStore = defineStore('auth', {
     isAuthenticated(state) {
       return state.user !== null;
     },
+    userDefaultLocation(state) {
+      return state?.user?.employee?.defaultLocation ?? null;
+    },
     userLocations(state) {
       return state?.user?.locations ?? [];
     },
