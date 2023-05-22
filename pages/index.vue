@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import InfoModalWindow from '@/components/modals/InfoModalWindow.vue';
+
 type Person = {
   id: number;
   name: string;
@@ -19,6 +21,15 @@ const people = [
 ] as Person[];
 
 const person = ref<Person>();
+
+const openInfoModal = () => {
+  useModalStore().openModal({
+    component: InfoModalWindow,
+    props: {
+      title: 'Congratulations!',
+    },
+  });
+};
 </script>
 
 <template>
@@ -31,5 +42,7 @@ const person = ref<Person>();
 
     <Select v-model="person" :options="people" placeholder="Please select a person" />
     {{ person }}
+
+    <Button class="mt-4" @click="openInfoModal">Open info modal</Button>
   </PageContent>
 </template>

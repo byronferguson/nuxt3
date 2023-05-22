@@ -19,6 +19,7 @@ useHead({
       <main class="flex-grow">
         <slot />
       </main>
+      <ModalWindow />
       <PageFooter />
     </div>
   </div>
