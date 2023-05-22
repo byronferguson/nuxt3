@@ -25,6 +25,7 @@ export const useModalStore = defineStore('modal', {
     },
 
     closeModal() {
+      console.log('close modal');
       this.modalState = basicState;
     },
   },

@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     GlobalButton: typeof import('./components/global/Button.vue')['default']
     GlobalDatePicker: typeof import('./components/global/DatePicker.vue')['default']
     GlobalInput: typeof import('./components/global/Input.vue')['default']
+    GlobalModalBase: typeof import('./components/global/ModalBase.vue')['default']
     GlobalModalWindow: typeof import('./components/global/ModalWindow.vue')['default']
     GlobalPageContent: typeof import('./components/global/PageContent.vue')['default']
     GlobalPageFooter: typeof import('./components/global/PageFooter.vue')['default']

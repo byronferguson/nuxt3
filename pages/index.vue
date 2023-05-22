@@ -26,7 +26,7 @@ const openInfoModal = () => {
   useModalStore().openModal({
     component: InfoModalWindow,
     props: {
-      title: 'Congratulations!',
+      title: 'Say what!?',
     },
   });
 };

@@ -2,39 +2,31 @@
 defineProps<{
   title: string;
 }>();
+
+const modalStore = useModalStore();
 </script>
 
 <template>
-  <div class="inner">
-    <h2>Title: {{ title }}</h2>
-    <p>You have done such great work! Congratulations on reaching this step!</p>
-  </div>
+  <ModalBase>
+    <template #title>
+      <h2 class="text-3xl font-bold">{{ title }}</h2>
+    </template>
+
+    <div class="mt-2">
+      <p class="text-sm text-gray-500">
+        Your payment has been successfully submitted. We’ve sent you an email with all of the
+        details of your order.
+      </p>
+    </div>
+
+    <div class="mt-4">
+      <button
+        type="button"
+        class="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+        @click="modalStore.closeModal"
+      >
+        Got it, thanks!
+      </button>
+    </div>
+  </ModalBase>
 </template>
-
-<style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.inner {
-  background-color: white;
-  padding: 1rem;
-
-  border-radius: 1rem;
-
-  display: flex;
-  flex-direction: column;
-  gap: 1.4rem;
-}
-
-.inner > h2 {
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-.inner > p {
-  font-size: 1.8rem;
-  font-weight: 300;
-}
-</style>
