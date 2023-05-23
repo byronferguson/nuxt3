@@ -131,5 +131,26 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('@headlessui/tailwindcss')({ prefix: 'ui' })],
+  daisyui: {
+    themes: [
+      {
+        bigblue: {
+          primary: '#1F145D',
+          secondary: '#2157D6',
+          accent: '#99E3FA',
+          neutral: 'red',
+          'base-100': '#f3f4f6',
+          info: '#3ABFF8',
+          success: '#36D399',
+          warning: '#FFCF34',
+          error: '#F87272',
+        },
+      },
+    ],
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@headlessui/tailwindcss')({ prefix: 'ui' }),
+    require('daisyui'),
+  ],
 };

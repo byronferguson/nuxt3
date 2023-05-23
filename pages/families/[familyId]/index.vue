@@ -1,14 +1,20 @@
 <script lang="ts" setup>
-const route = useRoute();
+const { familyId } = useRoute('families-familyId').params;
+const pages = [
+  { name: 'Families', href: '/families', current: false },
+  { name: `Family #${familyId}`, href: '#', current: true },
+];
 
-const familyId = computed(() => route.params.familyId);
-const title = computed(() => `Family ${familyId.value}`);
+const title = computed(() => `Family ${familyId}`);
 </script>
 
 <template>
-  <PageContent>
+  <PageContent :container="false">
     <template #header>
-      <PageHeading :title="title"></PageHeading>
+      <Breadcrumbs v-once :pages="pages" />
     </template>
+    <FamiliesHeader />
+
+    <FamiliesStudentCard />
   </PageContent>
 </template>

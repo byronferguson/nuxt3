@@ -14,7 +14,7 @@ useHead({
     <NavBar />
 
     <div
-      class="flex flex-col py-6 mx-auto max-w-8xl sm:px-6 lg:px-8 min-h-screen-minus-nav gap-y-4"
+      class="flex flex-col py-6 mx-auto max-w-screen-minus-padding sm:px-6 lg:px-8 min-h-screen-minus-nav gap-y-4"
     >
       <main class="flex-grow">
         <slot />
@@ -28,5 +28,9 @@ useHead({
 <style lang="postcss">
 .min-h-screen-minus-nav {
   min-height: calc(100vh - 64px);
+}
+
+.max-w-screen-minus-padding {
+  max-width: calc(100vw - 2rem);
 }
 </style>

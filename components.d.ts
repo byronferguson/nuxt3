@@ -9,7 +9,9 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    copy: typeof import('./components/global/PageHeading copy.vue')['default']
+    copy: typeof import('./components/global/PageContent copy.vue')['default']
+    FamiliesHeader: typeof import('./components/families/Header.vue')['default']
+    FamiliesStudentCard: typeof import('./components/families/StudentCard.vue')['default']
     GlobalBreadcrumbs: typeof import('./components/global/Breadcrumbs.vue')['default']
     GlobalButton: typeof import('./components/global/Button.vue')['default']
     GlobalDatePicker: typeof import('./components/global/DatePicker.vue')['default']
@@ -20,6 +22,7 @@ declare module '@vue/runtime-core' {
     GlobalPageFooter: typeof import('./components/global/PageFooter.vue')['default']
     GlobalPageHeader: typeof import('./components/global/PageHeader.vue')['default']
     GlobalPageHeading: typeof import('./components/global/PageHeading.vue')['default']
+    GlobalPanel: typeof import('./components/global/Panel.vue')['default']
     GlobalSelect: typeof import('./components/global/Select.vue')['default']
     GlobalTable: typeof import('./components/global/Table.vue')['default']
     GlobalTextInput: typeof import('./components/global/TextInput.vue')['default']
