@@ -16,7 +16,9 @@ export const useModalStore = defineStore('modal', {
     ({
       modalState: basicState,
     } as ModalState),
-  getters: {},
+  getters: {
+    isOpen: state => state.modalState.component !== null,
+  },
   actions: {
     openModal(payload: OpenModalPayload) {
       const { component, props = {} } = payload;

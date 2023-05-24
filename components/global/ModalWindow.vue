@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { TransitionRoot, TransitionChild, Dialog } from '@headlessui/vue';
 const modalStore = useModalStore();
-
-const isOpen = computed(() => !!modalStore.modalState?.component);
 </script>
 
 <template>
-  <TransitionRoot appear :show="isOpen" as="template">
+  <TransitionRoot appear :show="modalStore.isOpen" as="template">
     <Dialog as="div" class="relative z-10" @close="modalStore.closeModal">
       <TransitionChild
         as="template"
