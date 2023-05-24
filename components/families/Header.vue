@@ -3,12 +3,12 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import { EllipsisVerticalIcon, InformationCircleIcon } from '@heroicons/vue/20/solid';
 
 const stats = [
-  { name: 'Total Spend', value: 155592, format: 'currency' },
-  { name: 'Total Credits', value: 0, format: 'currency' },
-  { name: 'Total Refunds', value: 0, format: 'currency' },
-  { name: 'Total Make-Ups', value: 0 },
-  { name: 'Balance Due', value: 0, format: 'currency' },
-  { name: 'Credit Balance', value: 0, format: 'currency' },
+  { name: 'Total Spend', value: 155592.21, format: 'currency', scale: 2 },
+  { name: 'Total Credits', value: 500, format: 'currency' },
+  { name: 'Total Refunds', value: 350, format: 'currency' },
+  { name: 'Total Make-Ups', value: null },
+  { name: 'Balance Due', value: 125.58, format: 'currency', scale: 2 },
+  { name: 'Credit Balance', value: -540.1, format: 'currency' },
 ];
 </script>
 
@@ -34,7 +34,14 @@ const stats = [
           class="flex flex-col items-center justify-center"
         >
           <h3 class="text-sm text-light-primary">{{ stat.name }}</h3>
-          <p class="text-2xl font-medium">{{ $formatValue(stat.value, stat.format) }}</p>
+
+          <AnimatedNumber :end="stat.value ?? 0" :scale="stat.scale">
+            <template #default="{ currentValue, isNegative }">
+              <p class="text-2xl font-medium" :class="{ 'text-secondary': isNegative }">
+                {{ $formatValue(currentValue, stat.format, stat.scale) }}
+              </p>
+            </template>
+          </AnimatedNumber>
         </div>
 
         <!-- Action Menu -->

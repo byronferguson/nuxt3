@@ -12,6 +12,8 @@ declare module '@vue/runtime-core' {
     copy: typeof import('./components/global/PageContent copy.vue')['default']
     FamiliesHeader: typeof import('./components/families/Header.vue')['default']
     FamiliesStudentCard: typeof import('./components/families/StudentCard.vue')['default']
+    GlobalAnimatedNumber: typeof import('./components/global/AnimatedNumber.vue')['default']
+    GlobalAnimateNumber: typeof import('./components/global/AnimateNumber.vue')['default']
     GlobalBreadcrumbs: typeof import('./components/global/Breadcrumbs.vue')['default']
     GlobalButton: typeof import('./components/global/Button.vue')['default']
     GlobalDatePicker: typeof import('./components/global/DatePicker.vue')['default']
