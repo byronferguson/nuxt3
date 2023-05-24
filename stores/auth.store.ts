@@ -60,6 +60,7 @@ export const useAuthStore = defineStore('auth', {
         this.expiresAt = expires;
 
         await Promise.all([this.updateAuthUser(), this.fetchAbilities()]);
+        this.initStores();
         await navigateTo('/', { replace: true });
       } catch (error: any) {
         this.authMessage =
@@ -95,6 +96,11 @@ export const useAuthStore = defineStore('auth', {
 
     updateAbilities() {
       ability.update(this.abilities ?? []);
+    },
+
+    initStores() {
+      useCurriculumStore().init();
+      useLevelStore().init();
     },
 
     /**
