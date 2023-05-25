@@ -11,8 +11,6 @@ const pages = [
 ];
 
 const title = computed(() => `Family ${familyId}`);
-
-const { data } = useFetch(`/api/families/${familyId}/students`);
 </script>
 
 <template>
@@ -20,9 +18,8 @@ const { data } = useFetch(`/api/families/${familyId}/students`);
     <template #header>
       <Breadcrumbs v-once :pages="pages" />
     </template>
-    <FamiliesHeader />
+    <FamilyHeader />
 
-    <FamiliesStudentCard class="mt-4" />
-    <pre>{{ data }}</pre>
+    <FamilyStudents class="mt-4" />
   </PageContent>
 </template>

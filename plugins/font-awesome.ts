@@ -2,6 +2,7 @@ import { config, library } from '@fortawesome/fontawesome-svg-core';
 import {
   faAdd,
   faAddressBook,
+  faAt,
   faCalendar,
   faCashRegister,
   faChartBar,
@@ -10,10 +11,14 @@ import {
   faComment,
   faQuestionCircle,
   faSpinner,
+  faStar,
   faSwimmer,
   faUsers,
   faWrench,
 } from '@fortawesome/free-solid-svg-icons';
+
+import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
+
 // ignore the next line, it's just to make the typescript compiler happy
 // eslint-disable-next-line import/named
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -26,6 +31,7 @@ config.autoAddCss = false;
 library.add(
   faAdd,
   faAddressBook,
+  faAt,
   faCalendar,
   faCashRegister,
   faChartBar,
@@ -34,10 +40,13 @@ library.add(
   faComment,
   faQuestionCircle,
   faSpinner,
+  faStar,
   faSwimmer,
   faUsers,
   faWrench,
 );
+
+library.add(faStarRegular);
 
 export default defineNuxtPlugin(nuxtApp => {
   nuxtApp.vueApp.component('fa', FontAwesomeIcon);

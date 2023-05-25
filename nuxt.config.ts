@@ -40,7 +40,7 @@ export default defineNuxtConfig({
   ],
 
   imports: {
-    dirs: ['stores'],
+    dirs: ['schemas', 'stores'],
   },
 
   runtimeConfig: {
